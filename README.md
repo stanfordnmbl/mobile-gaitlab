@@ -9,7 +9,7 @@ This code requires data (~0.5GB), currently available on request. Please contact
 ## Contents
 
 | File | Description |
-| ------------- |:-------------:|
+|:------------- |:-------------|
 | process_annotations.ipynb | Processes OpenPose json files |
 | process_frames.ipynb | Normalize pozes in frames |
 | combine_video_csvs.ipynb | Combines time series of poses with labels |
