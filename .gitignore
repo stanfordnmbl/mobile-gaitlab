@@ -2,3 +2,6 @@ output_combined
 .ipynb_checkpoints
 *~
 output
+*.png
+data
+__pycache__

@@ -15,7 +15,7 @@ from scipy.stats import linregress
 
 from scipy import interpolate
 from scipy import signal
-import cPickle as pickle
+import pickle
 import itertools
 
 
@@ -78,7 +78,7 @@ def first_row_not_all_nan_or_zero(A,col_lst):
 def drop_confidence_cols(res):
     res = res.copy()
     num_parts = res.shape[1]/3
-    processed_cols = [True,True,False] * (num_parts)
+    processed_cols = [True,True,False] * int(num_parts)
     return res[:,processed_cols]
 
 def fill_nan(A):
@@ -115,7 +115,7 @@ def preprocess_frames(res):
     
     mhip_x = ((res[:,2*RHIP] + res[:,2*LHIP])/2).reshape(-1,1)
     mhip_y = ((res[:,2*RHIP+1] + res[:,2*LHIP+1])/2).reshape(-1,1)
-    mhip_coords = np.hstack([mhip_x,mhip_y]*num_parts)
+    mhip_coords = np.hstack([mhip_x,mhip_y]*int(num_parts))
     
     scale_vector_R = np.apply_along_axis(lambda x: np.linalg.norm(x[topoint(RHIP)] -
                                                                   x[topoint(RKNE)]),1,res)
