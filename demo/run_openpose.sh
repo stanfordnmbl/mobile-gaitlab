@@ -1,0 +1,1 @@
+docker run --gpus all -it --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -w /openpose -v $(pwd)/in:/openpose/input -v $(pwd)/out:/openpose/output openpose /openpose/build/examples/openpose/openpose.bin --video /openpose/input/input.mp4 --display 0 --write_json /openpose/output/keypoints -write_video /openpose/output/video.mp4
