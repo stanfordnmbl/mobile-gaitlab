@@ -1,4 +1,4 @@
-# Training and the analysis
+# Training and analysis
 
 For training our models you need to install `requirements.txt` from the main directory
 ```bash
