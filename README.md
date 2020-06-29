@@ -19,5 +19,7 @@ To train neural networks from scratch, using our large dataset of preprocessed v
 ## License 
 
 This source code is released under [Apache 2.0 License](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/LICENSE).
-Processed video trajectories available [here](https://simtk.org/frs/?group_id=1918) are available under [CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/)
+
+Processed video trajectories available [here](https://simtk.org/frs/?group_id=1918) are available under [CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/) license.
+
 [The original video file used in the demo](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/in/input.mp4) is provided by courtesy of [Gillette Children's Specialty Healthcare](https://www.gillettechildrens.org/) and should not be used for anything else than testing this repository without a written permission from the hospital.
