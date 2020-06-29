@@ -10,11 +10,11 @@ by Łukasz Kidziński*, Bryan Yang*, Jennifer Hicks, Apoorva Rajagopal, Scott De
 
 ## Demo
 
-To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb)
+To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb). To run the demo you'll need a computer with an NVIDIA GPU, [NVIDIA docker](https://github.com/NVIDIA/nvidia-docker), and Python 3.7.
 
 ## Training
 
-To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training).
+To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training). To run the training code you need a computer with a GPU and Python 3.7.
 
 ## License 
 
