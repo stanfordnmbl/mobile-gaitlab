@@ -5,7 +5,7 @@ Training and inference scripts for predicting gait parameters from video. We use
 ![Cerebral Palsy (CP) gait post-operative](https://health-ai.s3.amazonaws.com/static/cp-gait.gif)
 
 Implementation of algorithms for:
-"Clinical gait analysis at home: Deep neural networks enable quantitative movement analysis using single-camera videos"
+"Deep neural networks enable quantitative movement analysis using single-camera videos"
 by Łukasz Kidziński*, Bryan Yang*, Jennifer Hicks, Apoorva Rajagopal, Scott Delp, Michael Schwartz
 
 ## Demo
