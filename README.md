@@ -8,23 +8,16 @@ Implementation of algorithms for:
 "Clinical gait analysis at home: Deep neural networks enable quantitative movement analysis using single-camera videos"
 by Łukasz Kidziński*, Bryan Yang*, Jennifer Hicks, Apoorva Rajagopal, Scott Delp, Michael Schwartz
 
-This code requires data (~0.5GB), currently available on request. Please contact lukasz.kidzinski@stanford.edu
+## Demo
 
-## Contents
+To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb)
 
-| File | Description |
-|:------------- |:-------------|
-| process_annotations.ipynb* | Processes OpenPose json files |
-| process_frames.ipynb* | Normalize pozes in frames |
-| combine_video_csvs.ipynb | Combines time series of poses with labels |
-| split_ids.ipynb | Training, validation, testing split |
-| compute_SEMLS_residuals.ipynb | Builds simple models for SEMLS to control for demographics |
-| process_raw_videos.ipynb* | Additional processing of trajectories (missing data, smoothing, orientation) |
-| cnn_predict_doublesided_var.ipynb* | Models for variables that depend on the side (GDI, knee flexion at max extension) |
-| cnn_predict_singlesided_var.ipynb* | Models for variables that don't depend on the side (cadence, speed) |
-| select_optimal_epoch.ipynb | Choose the best model based on validation error |
-| calculate_corr_rmse.ipynb | Get performance metrics for classification and regression tasks |
-| calculate_SEMLS_ROC.ipynb | Get performance metrics for the binary prediction task (SEMLS) |
-| statistical_analysis.ipynb | Analyze results from models |
+## Training
 
-For predicting on new video data you need to run files with *.
+To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/nature_comm_paper).
+
+## License 
+
+This source code is released under [Apache 2.0 License](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/LICENSE).
+Processed video trajectories available [here](https://simtk.org/frs/?group_id=1918) are available under [CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/)
+[The original video file used in the demo](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/in/input.mp4) is provided by courtesy of [Gillette Children's Specialty Healthcare](https://www.gillettechildrens.org/) and should not be used for anything else than testing this repository without a written permission from the hospital.
