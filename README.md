@@ -14,7 +14,7 @@ To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-g
 
 ## Training
 
-To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/nature_comm_paper).
+To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training).
 
 ## License 
 
