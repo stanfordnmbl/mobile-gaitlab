@@ -5,3 +5,4 @@ output
 *.png
 data
 __pycache__
+figures-source-and-data.zip
