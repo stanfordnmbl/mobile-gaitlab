@@ -104,7 +104,7 @@ def impute_frames(frames):
 def filter_frames(frames):
     return np.apply_along_axis(lambda x: gaussian_filter1d(x,1),arr=frames,axis=0)
 
-def preprocess_frames(res):
+def preprocess_frames(res, swap_orientation=True):
     res = res.copy()
     num_parts = res.shape[1]/3
     res = drop_confidence_cols(res)
@@ -124,11 +124,17 @@ def preprocess_frames(res):
     scale_vector = ((scale_vector_R + scale_vector_L)/2.0).reshape(-1,1)
     
     res = (res-mhip_coords)/scale_vector
+    
     #apply the sign
     lt_x = res[:,2*LANK] - res[:,2*LBTO]
     rt_x = res[:,2*RANK] - res[:,2*RBTO]
     orientation = np.where(lt_x+rt_x >= 0,1,-1).reshape(-1,1)
-    return res/orientation
+
+    # only to X
+    if swap_orientation:
+        even = [2*x for x in range(res.shape[1]//2)]
+        res[:,even] = res[:,even] / orientation
+    return res
     
 
 def get_distance(A,B,centered_filtered):
