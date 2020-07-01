@@ -10,15 +10,17 @@ by Łukasz Kidziński*, Bryan Yang*, Jennifer Hicks, Apoorva Rajagopal, Scott De
 
 ## Demo
 
-To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb)
+To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb). To run the demo you'll need a computer with an NVIDIA GPU, [NVIDIA docker](https://github.com/NVIDIA/nvidia-docker), and Python 3.7.
 
 ## Training
 
-To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training).
+To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training). To run the training code you need a computer with a GPU and Python 3.7.
 
 ## License 
 
 This source code is released under [Apache 2.0 License](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/LICENSE).
+
+Our software relies on [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) under [a custom non-commercial license](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/LICENSE). Other libraries are under permissive open source licenses. For specific licenses please refer to maintainers of packages listed in our [requirements file](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/requirements.txt). If you intend to use our software it's your obligation to make sure you comply with licensing terms of all linked software.
 
 Processed video trajectories available [here](https://simtk.org/frs/?group_id=1918) are available under [CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/) license.
 
