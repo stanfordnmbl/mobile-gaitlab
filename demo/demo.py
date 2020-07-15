@@ -28,43 +28,6 @@ keras.losses.loss = keras.losses.mse
 keras.metrics.loss = keras.metrics.mse
 from statsmodels.regression.linear_model import OLSResults
 
-os.system('cd /openpose ; /openpose/build/examples/openpose/openpose.bin --video /gaitlab/input/input.mp4 --display 0 --write_json /gaitlab/output/keypoints -write_video /gaitlab/output/video.mp4 ; cd /gaitlab')
-
-# ## Collect data
-# 
-# Record a video of gait from the side. To achieve best results:
-# * Camera should be placed 4 meters from the line of walking
-# * Ask the person to walk straight from the right to the left (looking from the camera perspective)
-# * Make sure there are no other people in the background
-# * If the line of walking is short, ask them to turn at the end and go back
-# * Record in potrait mode
-# * Follow the person by rotating the camera set in the same place
-# * Save the video as mp4 at 30 frames per second
-# 
-# See an example video below.
-# 
-# ## Run openpose
-# 
-# In order to run openpose on your video, save your video as `input.mp4` in the `in` directory of this repository. You only need NVIDIA docker installed in your system -- OpenPose will be downloaded automatically.
-# 
-# For convenience, we added an example video to `in` directory.
-
-# In[2]:
-
-
-# ## Processing the output
-# 
-# Next, we need to process OpenPose output to the format accepted by our neural networks. This will include:
-# 
-# * processing json files to create a data matrix,
-# * intrapolating signals,
-# * scaling (normalizing) observations.
-# 
-# First, we convert JSON output to a data matrix
-
-# In[4]:
-
-
 def convert_json2csv(json_dir):
     resL = np.zeros((300,75))
     resL[:] = np.nan
@@ -89,41 +52,6 @@ def convert_json2csv(json_dir):
         if check[i]:
             break
     return resL[:i+1]
-
-
-# In[5]:
-
-
-frames = convert_json2csv("output/keypoints/")
-pd.DataFrame(frames)
-print(frames)
-
-# Next, we normalize frames using a predefined preprocessing function `process_video_and_add_cols` (see `video_process_utils.py` for details).
-
-# In[6]:
-
-
-processed_videos = []
-processed_video_segments = []
-
-centered_filtered = process_video_and_add_cols(frames)
-centered_filtered_noswap = process_video_and_add_cols(frames,
-                                swap_orientation=False) # don't swap X for metrics computed on both legs
-
-
-# For validation, we plot some of the features. If everything is correct all signals should be smooth. We chose a dark theme 
-
-# In[7]:
-
-
-# The big discontinouity around the friame 170 corresponds to the change of the orientation of the video. We mirror videos so that they all seem to have a person walking from right to left.
-
-# ## Predicting gait parameters
-# 
-# With preprocessed data we are finally ready to run predition models. First, we define a function that takes a preprocessed multivariate time series data and runs a selected model.
-
-# In[8]:
-
 
 def get_prediction(centered_filtered, col, side = None):
     model = load_model("models/{}_best.pb".format(col))
@@ -154,8 +82,8 @@ def get_prediction(centered_filtered, col, side = None):
     samples = []
     for nstart in range(0,video_len-124,31):
         samples.append(centered_filtered[nstart:(nstart+124),cols])
-    X = np.stack(samples)
-    
+        X = np.stack(samples)
+        
     p = model.predict(X)[:,0]
     p = undo_scaling(p, maps[col][0], maps[col][1])
     p = np.transpose(np.vstack([p,np.ones(p.shape[0])]))
@@ -169,19 +97,25 @@ def get_prediction(centered_filtered, col, side = None):
 # In[9]:
 
 
-def get_all_preds(centered_filtered):
+def get_all_preds(centered_filtered, centered_filtered_noswap):
     cols = ["GDI","gmfcs","speed","cadence","SEMLS_dev_residual"]
     return dict([(col, get_prediction(centered_filtered, col)) for col in cols] + [
         ("KneeFlex_maxExtension_L", get_prediction(centered_filtered_noswap, "KneeFlex_maxExtension", "L")),
         ("KneeFlex_maxExtension_R", get_prediction(centered_filtered_noswap, "KneeFlex_maxExtension", "R")),
     ])
-    
 
+# def predict(path):
+#     values = {"test": 1}
 
-# Finally, we run all models on our data:
+#     return values, open(path, "rb")
 
-# In[10]:
+def predict(path):
+    os.system('cd /openpose ; /openpose/build/examples/openpose/openpose.bin --video {} --display 0 --write_json /gaitlab/output/keypoints -write_video /gaitlab/output/video.mp4 ; cd /gaitlab'.format(path))
 
+    frames = convert_json2csv("output/keypoints/")
 
-print(get_all_preds(centered_filtered))
+    centered_filtered = process_video_and_add_cols(frames)
+    centered_filtered_noswap = process_video_and_add_cols(frames, swap_orientation=False)
+
+    return get_all_preds(centered_filtered, centered_filtered_noswap), open("/gaitlab/output/video.mp4", "rb")
 
