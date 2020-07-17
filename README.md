@@ -18,7 +18,7 @@ To train neural networks from scratch, using our large dataset of preprocessed v
 
 ## License 
 
-This source code is released under [Apache 2.0 License](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/LICENSE).
+This source code is released under [Apache 2.0 License](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/LICENSE). Stanford University has a pending patent on this technology, please contact authors or [Stanford's Office of Technology Licensing](https://otl.stanford.edu/) for details if you are interested in commercial use of this technology.
 
 Our software relies on [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) under [a custom non-commercial license](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/LICENSE). Other libraries are under permissive open source licenses. For specific licenses please refer to maintainers of packages listed in our [requirements file](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/requirements.txt). If you intend to use our software it's your obligation to make sure you comply with licensing terms of all linked software.
 
