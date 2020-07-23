@@ -28,6 +28,21 @@ keras.losses.loss = keras.losses.mse
 keras.metrics.loss = keras.metrics.mse
 from statsmodels.regression.linear_model import OLSResults
 
+from keras.backend.tensorflow_backend import clear_session
+import gc
+import tensorflow
+
+# Reset Keras Session
+def reset_keras():
+    clear_session()
+
+    try:
+        del classifier # this is from global space - change this as you need
+    except:
+        pass
+
+    print(gc.collect()) # if it's done something you should see a number being outputted
+    
 def convert_json2csv(json_dir):
     resL = np.zeros((300,75))
     resL[:] = np.nan
@@ -88,6 +103,8 @@ def get_prediction(centered_filtered, col, side = None):
     p = undo_scaling(p, maps[col][0], maps[col][1])
     p = np.transpose(np.vstack([p,np.ones(p.shape[0])]))
     p = correction_model.predict(pd.DataFrame(p))
+
+#    reset_keras()# Shouldn't be needed anymore
 
     return np.mean(p)
 
