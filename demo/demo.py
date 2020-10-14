@@ -136,3 +136,11 @@ def predict(path):
 
     return get_all_preds(centered_filtered, centered_filtered_noswap), open("/gaitlab/output/video.mp4", "rb")
 
+if __name__ == "__main__":
+    # execute only if run as a script
+    result, _ = predict("/gaitlab/input/input.mp4")
+
+    print("Writing results to result.json...")
+    text_file = open("/gaitlab/output/result.json", "w")
+    text_file.write(json.dumps(result))
+    text_file.close()
