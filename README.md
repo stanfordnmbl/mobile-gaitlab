@@ -8,13 +8,19 @@ Implementation of algorithms for:
 "Deep neural networks enable quantitative movement analysis using single-camera videos"
 by Łukasz Kidziński*, Bryan Yang*, Jennifer Hicks, Apoorva Rajagopal, Scott Delp, Michael Schwartz
 
-## Demo
+## Online demo
+
+[Try an online demo at gaitlab.stanford.edu](http://gaitlab.stanford.edu/)
+
+## Run demo locally
 
 To test our code follow [this notebook](https://github.com/stanfordnmbl/mobile-gaitlab/blob/master/demo/demo.ipynb). To run the demo you'll need a computer with an NVIDIA GPU, [NVIDIA docker](https://github.com/NVIDIA/nvidia-docker), and Python 3.7.
 
 ## Training
 
 To train neural networks from scratch, using our large dataset of preprocessed videos, use [training scripts from this directory](https://github.com/stanfordnmbl/mobile-gaitlab/tree/master/training). To run the training code you need a computer with a GPU and Python 3.7.
+
+[Download the dataset used in this project](https://simtk.org/frs/?group_id=1918)
 
 ## License 
 
